@@ -8,12 +8,8 @@
 </head>
 <body>
     <!-- Navigation Toggle Button -->
-    <button class="nav-toggle" id="navToggle">☰</button>
-
-    <!-- Navigation Overlay -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <!-- Navigation -->
+    <button class="nav-toggle" id="navToggle">☰</button>     <!-- Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay"></div>     <!-- Navigation -->
     <nav id="nav">
         <div>
             <div class="nav-logo">CW</div>
@@ -26,9 +22,7 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
+    </nav>     <!-- Hero Section -->
     <section class="hero" id="about">
         <div class="hero-bg"></div>
         <div class="hero-content">
@@ -42,40 +36,30 @@
                 <a href="#contact" class="btn btn-secondary">Get in Touch</a>
             </div>
         </div>
-    </section>
-
-    <!-- Featured Projects Section (populated from All Projects by JS) -->
+    </section>     <!-- Featured Projects Section (populated from All Projects by JS) -->
     <section class="section" id="featured-projects">
         <h2 class="section-title">Featured Projects</h2>
         <div class="projects-grid featured-projects-grid">
             <!-- JS will clone featured project cards in here -->
         </div>
-    </section>
-
-    <!-- Resume Section -->
+    </section>     <!-- Resume Section -->
     <section class="section" id="resume">
         <h2 class="section-title">Resume & Skills</h2>
         <div class="resume-section">
             <div class="resume-content">
-                <h3>Experience & Education</h3>
-
-                <div class="resume-item">
+                <h3>Experience & Education</h3>                 <div class="resume-item">
                     <div class="resume-title">Computer Science Student</div>
                     <div class="resume-subtitle">Temple University (Graduating 2027)</div>
                     <div class="resume-description">
                         Coursework in networking, systems design, and advanced programming. Active in projects spanning backend services, infrastructure, and interactive applications.
                     </div>
-                </div>
-
-                <div class="resume-item">
+                </div>                 <div class="resume-item">
                     <div class="resume-title">Software & Systems Developer</div>
                     <div class="resume-subtitle">Personal & Collaborative Projects</div>
                     <div class="resume-description">
                         Designed and deployed real-time, networked applications with a focus on reliability, observability, and performance across client–server boundaries.
                     </div>
-                </div>
-
-                <h3>Skills</h3>
+                </div>                 <h3>Skills</h3>
                 <div class="skills-grid">
                     <div class="skill-item">Lua Scripting</div>
                     <div class="skill-item">JavaScript/Node.js</div>
@@ -86,45 +70,31 @@
                     <div class="skill-item">Git & Version Control</div>
                     <div class="skill-item">Performance Optimization</div>
                 </div>
-            </div>
-
-            <div class="resume-content">
-                <h3>Expertise Areas</h3>
-
-                <div class="resume-item">
+            </div>             <div class="resume-content">
+                <h3>Expertise Areas</h3>                 <div class="resume-item">
                     <div class="resume-title">Multiplayer & Networked Systems</div>
                     <div class="resume-description">
                         Client-side prediction, server reconciliation, lag compensation, and netcode architecture for responsive, networked experiences.
                     </div>
-                </div>
-
-                <div class="resume-item">
+                </div>                 <div class="resume-item">
                     <div class="resume-title">Systems & API Design</div>
                     <div class="resume-description">
                         Designing clear interfaces, event-driven architectures, and robust state management for scalable services and tools.
                     </div>
-                </div>
-
-                <div class="resume-item">
+                </div>                 <div class="resume-item">
                     <div class="resume-title">Performance & Reliability</div>
                     <div class="resume-description">
                         Latency masking, bandwidth reduction, server load balancing, and real-time performance monitoring across distributed systems.
                     </div>
-                </div>
-
-                <div class="resume-item">
+                </div>                 <div class="resume-item">
                     <div class="resume-title">State & Data Management</div>
                     <div class="resume-description">
                         Consistency checking, synchronization strategies, and replay-style systems for debugging and analysis.
                     </div>
-                </div>
-
-                <a href="#" class="btn btn-secondary" style="margin-top: 20px; justify-self: start;">Download Resume PDF</a>
+                </div>                 <a href="#" class="btn btn-secondary" style="margin-top: 20px; justify-self: start;">Download Resume PDF</a>
             </div>
         </div>
-    </section>
-
-    <!-- Blog Section -->
+    </section>     <!-- Blog Section -->
     <section class="section" id="blog">
         <h2 class="section-title">Latest Articles</h2>
         <div class="blog-grid">
@@ -140,9 +110,7 @@
                     Deep dive into building exploit-resistant, server-authoritative architectures with client-side prediction and server validation for real-time apps.
                 </p>
                 <div class="blog-tag">Systems & Netcode</div>
-            </div>
-
-            <div class="blog-card"
+            </div>             <div class="blog-card"
                  data-article-date="November 20, 2025"
                  data-article-tag="Realtime Design"
                  data-article-title="Designing Responsive Realtime Interactions"
@@ -154,9 +122,7 @@
                     Exploring timing-sensitive systems, interpolation, and synchronization techniques for smooth user experiences under real-world latency.
                 </p>
                 <div class="blog-tag">Realtime Design</div>
-            </div>
-
-            <div class="blog-card"
+            </div>             <div class="blog-card"
                  data-article-date="November 15, 2025"
                  data-article-tag="Optimization"
                  data-article-title="Optimizing Bandwidth in Networked Applications"
@@ -170,9 +136,7 @@
                 <div class="blog-tag">Optimization</div>
             </div>
         </div>
-    </section>
-
-    <!-- Article Modal -->
+    </section>     <!-- Article Modal -->
     <div class="article-modal-overlay" id="articleModal">
         <div class="article-modal">
             <button class="article-modal-close" id="articleModalClose">✕</button>
@@ -186,9 +150,7 @@
                 <div class="article-modal-body" id="articleModalBody"></div>
             </div>
         </div>
-    </div>
-
-    <!-- Project Modal (single project detail) -->
+    </div>     <!-- Project Modal (single project detail) -->
     <div class="project-modal-overlay" id="projectModal">
         <div class="project-modal">
             <button class="project-modal-close" id="projectModalClose">✕</button>
@@ -199,18 +161,14 @@
                 <div class="project-modal-body" id="projectModalBody"></div>
             </div>
         </div>
-    </div>
-
-    <!-- All Projects Modal (opened from nav) -->
+    </div>     <!-- All Projects Modal (opened from nav) -->
     <div class="project-modal-overlay" id="allProjectsModal">
         <div class="project-modal">
             <button class="project-modal-close" id="allProjectsModalClose">✕</button>
             <div class="project-modal-content">
                 <h3 class="project-modal-title">All Projects</h3>
                 <div class="projects-grid all-projects-grid">
-                    <!-- Each project lives here once -->
-
-                    <div class="project-card"
+                    <!-- Each project lives here once -->                     <div class="project-card"
                          data-featured="true"
                          data-project-title="Networked Services Layer"
                          data-project-summary="Server-driven animation syncing layer that separates critical gameplay timelines from visual polish."
@@ -228,9 +186,7 @@
                             </div>
                             <a href="#" class="project-link">Learn more →</a>
                         </div>
-                    </div>
-
-                    <div class="project-card"
+                    </div>                     <div class="project-card"
                          data-featured="true"
                          data-project-title="Systems & Tools Framework"
                          data-project-summary="Toolkit for analyzing algorithm behavior in terms of time, memory, and storage complexity."
@@ -249,14 +205,12 @@
                             </div>
                             <a href="#" class="project-link">Learn more →</a>
                         </div>
-                    </div>
-
-                    <div class="project-card"
+                    </div>                     <div class="project-card"
                          data-featured="true"
                          data-project-title="Performance & Monitoring Toolkit"
                          data-project-summary="Toolkit for analyzing algorithm behavior in terms of time, memory, and storage complexity."
                          data-project-video=""
-                         data-project-body="This toolkit focuses on measuring how algorithms behave under real workloads by tracking their time, memory, and storage characteristics. It runs configurable test suites against a given implementation, records how runtime scales with input size, and captures peak and average memory usage.\n\nThe system aggregates these measurements into simple visual summaries and reports, so it’s easy to compare different approaches to the same problem. It is designed to highlight practical complexity—not just Big-O on paper—by surfacing constant factors, cache effects, and I/O costs that show up in real executions.\n\nInternally, the toolkit wraps target functions with timing, allocation, and storage instrumentation, then exports the collected data for further analysis or visualization. This makes it useful both for learning algorithmic trade-offs and for performance tuning in production-style code.">
+                         data-project-body="This toolkit focuses on measuring how algorithms behave under real workloads by tracking their time, memory, and storage characteristics. It runs configurable test suites against a given implementation, records how runtime scales with input size, and captures peak and average memory usage.\n\nThe system aggregates these measurements into simple visual summaries and reports, so it’s easy to compare different approaches to the same problem. It is designed to highlight practical complexity—not just Big-O on paper—by surfacing constant factors, cache effects, and I/O costs that show up in real executions. Internally, the toolkit wraps target functions with timing, allocation, and storage instrumentation, then exports the collected data for further analysis or visualization. This makes it useful both for learning algorithmic trade-offs and for performance tuning in production-style code.">
                         <div class="project-header">📊</div>
                         <div class="project-body">
                             <h3 class="project-title">Performance & Monitoring Toolkit</h3>
@@ -270,15 +224,11 @@
                             </div>
                             <a href="#" class="project-link">Learn more →</a>
                         </div>
-                    </div>
-
-                    <!-- Add more non-featured projects here (omit data-featured or set data-featured="false") -->
+                    </div>                     <!-- Add more non-featured projects here (omit data-featured or set data-featured="false") -->
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Contact Section -->
+    </div>     <!-- Contact Section -->
     <section class="section" id="contact">
         <h2 class="section-title">Let's Connect</h2>
         <div class="contact-content">
@@ -304,13 +254,9 @@
                 </a>
             </div>
         </div>
-    </section>
-
-    <!-- Footer -->
+    </section>     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Chamar Williams. Built with care. </p>
-    </footer>
-
-    <script src="script.js"></script>
+    </footer>     <script src="script.js"></script>
 </body>
 </html>
