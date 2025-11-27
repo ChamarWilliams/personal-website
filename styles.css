@@ -568,6 +568,86 @@ nav > div {
     font-weight: 600;
 }
 
+/* Article Modal */
+.article-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    backdrop-filter: blur(4px);
+}
+
+.article-modal-overlay.open {
+    display: flex;
+}
+
+.article-modal {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    max-width: 720px;
+    width: min(90%, 720px);
+    max-height: 80vh;
+    padding: 24px 24px 20px;
+    position: relative;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.article-modal-close {
+    position: absolute;
+    top: 12px;
+    left: 12px; /* X in top-left */
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.article-modal-close:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--color-text);
+}
+
+.article-modal-content {
+    margin-top: 16px;
+}
+
+.article-modal-meta {
+    display: flex;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.article-modal-tag {
+    padding: 2px 8px;
+    border-radius: 999px;
+    background: rgba(0, 128, 0, 0.08);
+    color: var(--color-accent);
+}
+
+.article-modal-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+.article-modal-body {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
 /* Contact Section */
 .contact-content {
     max-width: 600px;
