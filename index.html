@@ -173,7 +173,11 @@
     <section class="section" id="blog">
         <h2 class="section-title">Latest Articles</h2>
         <div class="blog-grid">
-            <div class="blog-card">
+            <div class="blog-card"
+                 data-article-date="November 26, 2025"
+                 data-article-tag="Systems & Netcode"
+                 data-article-title="Server-Authoritative Systems: Architecture & Implementation"
+                 data-article-body="Deep dive into building exploit-resistant, server-authoritative architectures with client-side prediction, validation layers, and rollback strategies across real-world network conditions.">
                 <div class="blog-date">November 26, 2025</div>
                 <h3 class="blog-title">Server-Authoritative Systems: Architecture & Implementation</h3>
                 <p class="blog-excerpt">
@@ -182,7 +186,11 @@
                 <div class="blog-tag">Systems & Netcode</div>
             </div>
 
-            <div class="blog-card">
+            <div class="blog-card"
+                 data-article-date="November 20, 2025"
+                 data-article-tag="Realtime Design"
+                 data-article-title="Designing Responsive Realtime Interactions"
+                 data-article-body="Explores timing-sensitive systems, interpolation techniques, and synchronization strategies that keep interfaces responsive even under fluctuating latency.">
                 <div class="blog-date">November 20, 2025</div>
                 <h3 class="blog-title">Designing Responsive Realtime Interactions</h3>
                 <p class="blog-excerpt">
@@ -191,7 +199,11 @@
                 <div class="blog-tag">Realtime Design</div>
             </div>
 
-            <div class="blog-card">
+            <div class="blog-card"
+                 data-article-date="November 15, 2025"
+                 data-article-tag="Optimization"
+                 data-article-title="Optimizing Bandwidth in Networked Applications"
+                 data-article-body="Covers delta compression, interest management, and selective state sync patterns to keep bandwidth usage low while preserving correctness.">
                 <div class="blog-date">November 15, 2025</div>
                 <h3 class="blog-title">Optimizing Bandwidth in Networked Applications</h3>
                 <p class="blog-excerpt">
@@ -201,6 +213,21 @@
             </div>
         </div>
     </section>
+
+    <!-- Article Modal -->
+    <div class="article-modal-overlay" id="articleModal">
+        <div class="article-modal">
+            <button class="article-modal-close" id="articleModalClose">✕</button>
+            <div class="article-modal-content">
+                <div class="article-modal-meta">
+                    <span class="article-modal-date" id="articleModalDate"></span>
+                    <span class="article-modal-tag" id="articleModalTag"></span>
+                </div>
+                <h3 class="article-modal-title" id="articleModalTitle"></h3>
+                <p class="article-modal-body" id="articleModalBody"></p>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section class="section" id="contact">
