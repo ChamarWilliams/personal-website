@@ -175,7 +175,7 @@ if (allProjectsModal) {
 // Project modal logic (single project detail)
 const projectModal = document.getElementById('projectModal');
 const projectModalClose = document.getElementById('projectModalClose');
-const projectCards = document.querySelectorAll('.project-card');
+let projectCards = document.querySelectorAll('.project-card');
 
 const projectModalTitle = document.getElementById('projectModalTitle');
 const projectModalSummary = document.getElementById('projectModalSummary');
@@ -226,6 +226,7 @@ function closeProjectModal() {
     }
 }
 
+// Initial binding for any .project-card already in DOM
 projectCards.forEach(card => {
     card.addEventListener('click', () => openProjectModal(card));
 });
@@ -242,11 +243,34 @@ if (projectModal) {
     });
 }
 
+// Build Featured Projects from All Projects (data-featured="true")
+const allProjectsGrid = document.querySelector('.all-projects-grid');
+const featuredProjectsGrid = document.querySelector('.featured-projects-grid');
+
+if (allProjectsGrid && featuredProjectsGrid) {
+    const allProjectCards = Array.from(allProjectsGrid.querySelectorAll('.project-card'));
+    const featuredCards = allProjectCards.filter(card => card.dataset.featured === 'true');
+
+    // Clear featured container (should be empty already)
+    featuredProjectsGrid.innerHTML = '';
+
+    featuredCards.forEach(card => {
+        const clone = card.cloneNode(true);
+        featuredProjectsGrid.appendChild(clone);
+    });
+
+    // If more than 3 featured, enable horizontal scroll
+    if (featuredCards.length > 3) {
+        featuredProjectsGrid.classList.add('horizontal-scroll');
+    }
+
+    // Re-bind project click handlers including new clones
+    projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => openProjectModal(card));
+    });
+}
+
 // Close modals on Esc
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        if (articleModal && articleModal.classList.contains('open')) closeArticleModal();
-        if (projectModal && projectModal.classList.contains('open')) closeProjectModal();
-        if (allProjectsModal && allProjectsModal.classList.contains('open')) closeAllProjectsModal();
-    }
-});
+    if
