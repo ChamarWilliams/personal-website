@@ -124,7 +124,6 @@ if (articleModalClose) {
     articleModalClose.addEventListener('click', closeArticleModal);
 }
 
-// Close when clicking outside the popup (overlay)
 if (articleModal) {
     articleModal.addEventListener('click', (e) => {
         if (e.target === articleModal) {
@@ -133,9 +132,83 @@ if (articleModal) {
     });
 }
 
-// Close on Esc
+// Project modal logic
+const projectModal = document.getElementById('projectModal');
+const projectModalClose = document.getElementById('projectModalClose');
+const projectCards = document.querySelectorAll('.project-card');
+
+const projectModalTitle = document.getElementById('projectModalTitle');
+const projectModalSummary = document.getElementById('projectModalSummary');
+const projectModalVideoWrapper = document.getElementById('projectModalVideoWrapper');
+const projectModalBody = document.getElementById('projectModalBody');
+
+function openProjectModal(card) {
+    if (!projectModal) return;
+
+    const title = card.dataset.projectTitle || '';
+    const summary = card.dataset.projectSummary || '';
+    const video = card.dataset.projectVideo || '';
+    const bodyText = card.dataset.projectBody || '';
+
+    projectModalTitle.textContent = title;
+    projectModalSummary.textContent = summary;
+
+    // Reset video wrapper
+    projectModalVideoWrapper.innerHTML = '';
+    if (video) {
+        // Assume YouTube-style embed URL or any iframe src
+        const iframe = document.createElement('iframe');
+        iframe.src = video;
+        iframe.title = title || 'Project video';
+        iframe.allow =
+            'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.allowFullscreen = true;
+        projectModalVideoWrapper.appendChild(iframe);
+    }
+
+    // Body text paragraphs
+    projectModalBody.innerHTML = bodyText
+        .split('\n\n')
+        .map(p => `<p>${p}</p>`)
+        .join('');
+
+    projectModal.classList.add('open');
+}
+
+function closeProjectModal() {
+    if (!projectModal) return;
+    projectModal.classList.remove('open');
+
+    // Stop video by clearing iframe
+    if (projectModalVideoWrapper) {
+        projectModalVideoWrapper.innerHTML = '';
+    }
+}
+
+projectCards.forEach(card => {
+    card.addEventListener('click', () => openProjectModal(card));
+});
+
+if (projectModalClose) {
+    projectModalClose.addEventListener('click', closeProjectModal);
+}
+
+if (projectModal) {
+    projectModal.addEventListener('click', (e) => {
+        if (e.target === projectModal) {
+            closeProjectModal();
+        }
+    });
+}
+
+// Close both modals on Esc
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && articleModal && articleModal.classList.contains('open')) {
-        closeArticleModal();
+    if (e.key === 'Escape') {
+        if (articleModal && articleModal.classList.contains('open')) {
+            closeArticleModal();
+        }
+        if (projectModal && projectModal.classList.contains('open')) {
+            closeProjectModal();
+        }
     }
 });
