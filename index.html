@@ -20,7 +20,7 @@
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#featured-projects">Featured</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#all-projects">Projects</a></li>
                 <li><a href="#resume">Resume</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#contact">Contact</a></li>
@@ -90,72 +90,6 @@
             </div>
 
             <!-- Performance & Monitoring Toolkit -->
-            <div class="project-card"
-                 data-project-title="Performance & Monitoring Toolkit"
-                 data-project-summary="Instrumentation layer for latency, throughput, and load across services."
-                 data-project-video=""
-                 data-project-body="The Performance & Monitoring Toolkit instruments key paths across the stack, capturing timings, error codes, and resource usage.\n\nIt supports lightweight counters and histograms so bottlenecks can be identified without overwhelming the system with telemetry.\n\nThe toolkit is designed to plug into real-time or backend workloads, making it easier to reason about performance regressions and validate the impact of optimizations.">
-                <div class="project-header">📊</div>
-                <div class="project-body">
-                    <h3 class="project-title">Performance & Monitoring Toolkit</h3>
-                    <p class="project-description">
-                        Instrumentation and profiling toolkit for tracking latency, throughput, and resource usage across backend services and real-time systems.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Optimization</span>
-                        <span class="tag">Metrics</span>
-                        <span class="tag">Backend</span>
-                    </div>
-                    <a href="#" class="project-link">Learn more →</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- All Projects Section -->
-    <section class="section" id="projects">
-        <h2 class="section-title">All Projects</h2>
-        <div class="projects-grid">
-            <!-- You can list every project here; for now, mirror the same three -->
-            <div class="project-card"
-                 data-project-title="Networked Services Layer"
-                 data-project-summary="Server-driven animation syncing layer that separates critical gameplay timelines from visual polish."
-                 data-project-video="https://www.youtube.com/embed/GCNci0m_k5w"
-                 data-project-body="This demo focuses on animation synchronization in a networked environment, using the server as the single source of truth for timing. The system distinguishes between critical animations that affect gameplay (such as hit frames) and purely visual animations that exist for feedback and polish.\n\nThe video shows how clients align their local timelines to server-perceived time, so critical events land consistently even under different ping values. Visual animation layers can lead or lag slightly on each client, but the important frames are locked to server-confirmed timestamps.\n\nUnder the hood, the layer tracks animation events as timed markers attached to server state, then interpolates or adjusts client playback to keep those markers aligned. This approach reduces desync issues, makes hit detection feel fair, and still leaves room for smooth, responsive visuals on each client.">
-                <div class="project-header">🌐</div>
-                <div class="project-body">
-                    <h3 class="project-title">Networked Services Layer</h3>
-                    <p class="project-description">
-                        Scalable client–server communication layer with packet compression, state synchronization, and latency masking strategies for real-time applications.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Lua</span>
-                        <span class="tag">Networking</span>
-                    </div>
-                    <a href="#" class="project-link">Learn more →</a>
-                </div>
-            </div>
-
-            <div class="project-card"
-                 data-project-title="Systems & Tools Framework"
-                 data-project-summary="Modular framework for building and iterating core systems quickly."
-                 data-project-video=""
-                 data-project-body="The Systems & Tools Framework provides reusable building blocks such as event buses, finite state machines, and debugging overlays.\n\nIt focuses on making it cheap to experiment with mechanics and behaviors by centralizing logging, configuration, and feature flags, so changes are easy to roll out and reason about.\n\nThe architecture is designed to be embedded into real-time experiences, but the patterns apply broadly to any system that benefits from clean separation between domain logic, orchestration, and instrumentation.">
-                <div class="project-header">⚙️</div>
-                <div class="project-body">
-                    <h3 class="project-title">Systems & Tools Framework</h3>
-                    <p class="project-description">
-                        Modular framework for rapid feature iteration, including event systems, state machines, logging, and debugging utilities.
-                    </p>
-                    <div class="project-tags">
-                        <span class="tag">Architecture</span>
-                        <span class="tag">Framework</span>
-                        <span class="tag">Design</span>
-                    </div>
-                    <a href="#" class="project-link">Learn more →</a>
-                </div>
-            </div>
-
             <div class="project-card"
                  data-project-title="Performance & Monitoring Toolkit"
                  data-project-summary="Instrumentation layer for latency, throughput, and load across services."
@@ -314,7 +248,7 @@
         </div>
     </div>
 
-    <!-- Project Modal -->
+    <!-- Project Modal (single project detail) -->
     <div class="project-modal-overlay" id="projectModal">
         <div class="project-modal">
             <button class="project-modal-close" id="projectModalClose">✕</button>
@@ -323,6 +257,77 @@
                 <p class="project-modal-summary" id="projectModalSummary"></p>
                 <div class="project-modal-video-wrapper" id="projectModalVideoWrapper"></div>
                 <div class="project-modal-body" id="projectModalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- All Projects Modal (opened from nav) -->
+    <div class="project-modal-overlay" id="allProjectsModal">
+        <div class="project-modal">
+            <button class="project-modal-close" id="allProjectsModalClose">✕</button>
+            <div class="project-modal-content">
+                <h3 class="project-modal-title">All Projects</h3>
+                <div class="projects-grid">
+                    <!-- List every project here once -->
+                    <div class="project-card"
+                         data-project-title="Networked Services Layer"
+                         data-project-summary="Server-driven animation syncing layer that separates critical gameplay timelines from visual polish."
+                         data-project-video="https://www.youtube.com/embed/GCNci0m_k5w"
+                         data-project-body="This demo focuses on animation synchronization in a networked environment, using the server as the single source of truth for timing. The system distinguishes between critical animations that affect gameplay (such as hit frames) and purely visual animations that exist for feedback and polish.\n\nThe video shows how clients align their local timelines to server-perceived time, so critical events land consistently even under different ping values. Visual animation layers can lead or lag slightly on each client, but the important frames are locked to server-confirmed timestamps.\n\nUnder the hood, the layer tracks animation events as timed markers attached to server state, then interpolates or adjusts client playback to keep those markers aligned. This approach reduces desync issues, makes hit detection feel fair, and still leaves room for smooth, responsive visuals on each client.">
+                        <div class="project-header">🌐</div>
+                        <div class="project-body">
+                            <h3 class="project-title">Networked Services Layer</h3>
+                            <p class="project-description">
+                                Scalable client–server communication layer with packet compression, state synchronization, and latency masking strategies for real-time applications.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Lua</span>
+                                <span class="tag">Networking</span>
+                            </div>
+                            <a href="#" class="project-link">Learn more →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card"
+                         data-project-title="Systems & Tools Framework"
+                         data-project-summary="Modular framework for building and iterating core systems quickly."
+                         data-project-video=""
+                         data-project-body="The Systems & Tools Framework provides reusable building blocks such as event buses, finite state machines, and debugging overlays.\n\nIt focuses on making it cheap to experiment with mechanics and behaviors by centralizing logging, configuration, and feature flags, so changes are easy to roll out and reason about.\n\nThe architecture is designed to be embedded into real-time experiences, but the patterns apply broadly to any system that benefits from clean separation between domain logic, orchestration, and instrumentation.">
+                        <div class="project-header">⚙️</div>
+                        <div class="project-body">
+                            <h3 class="project-title">Systems & Tools Framework</h3>
+                            <p class="project-description">
+                                Modular framework for rapid feature iteration, including event systems, state machines, logging, and debugging utilities.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Architecture</span>
+                                <span class="tag">Framework</span>
+                                <span class="tag">Design</span>
+                            </div>
+                            <a href="#" class="project-link">Learn more →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card"
+                         data-project-title="Performance & Monitoring Toolkit"
+                         data-project-summary="Instrumentation layer for latency, throughput, and load across services."
+                         data-project-video=""
+                         data-project-body="The Performance & Monitoring Toolkit instruments key paths across the stack, capturing timings, error codes, and resource usage.\n\nIt supports lightweight counters and histograms so bottlenecks can be identified without overwhelming the system with telemetry.\n\nThe toolkit is designed to plug into real-time or backend workloads, making it easier to reason about performance regressions and validate the impact of optimizations.">
+                        <div class="project-header">📊</div>
+                        <div class="project-body">
+                            <h3 class="project-title">Performance & Monitoring Toolkit</h3>
+                            <p class="project-description">
+                                Instrumentation and profiling toolkit for tracking latency, throughput, and resource usage across backend services and real-time systems.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Optimization</span>
+                                <span class="tag">Metrics</span>
+                                <span class="tag">Backend</span>
+                            </div>
+                            <a href="#" class="project-link">Learn more →</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
