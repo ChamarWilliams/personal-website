@@ -16,9 +16,7 @@
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* enable scroll snap by section */
-html, body {
-    height: 100%;
+html {
     scroll-behavior: smooth;
 }
 
@@ -27,8 +25,6 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
-    scroll-snap-type: y mandatory;
-    overflow-y: scroll;
 }
 
 /* Navigation */
@@ -72,8 +68,13 @@ nav {
     transition: transform 0.35s ease-out;
 }
 
+nav:hover {
+    transform: translateX(0);
+}
+
 nav.open {
     transform: translateX(0);
+    transition: transform 0.35s ease-out;
 }
 
 nav > div {
@@ -152,7 +153,6 @@ nav > div {
     background: none;
     position: relative;
     overflow: hidden;
-    scroll-snap-align: start;
 }
 
 .hero::before {
@@ -176,7 +176,7 @@ nav > div {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('images/image.jpg') center center / cover no-repeat;
+    background: url('image.jpg') center center / cover no-repeat;
 }
 
 .hero-bg::after {
@@ -272,8 +272,6 @@ nav > div {
     margin-right: auto;
     padding: 80px 20px;
     border-top: 1px solid #e5e5e5;
-    min-height: 100vh;
-    scroll-snap-align: start;
 }
 
 .section-title {
