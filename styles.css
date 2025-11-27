@@ -25,6 +25,13 @@ body {
     background-color: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+html, body {
+    height: 100%;
+    scroll-behavior: smooth;
 }
 
 /* Navigation */
@@ -153,6 +160,12 @@ nav > div {
     background: none;
     position: relative;
     overflow: hidden;
+}
+
+.hero,
+.section {
+    scroll-snap-align: start;
+    min-height: 100vh;
 }
 
 .hero::before {
