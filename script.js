@@ -84,6 +84,7 @@ const articleModalDate = document.getElementById('articleModalDate');
 const articleModalTag = document.getElementById('articleModalTag');
 const articleModalTitle = document.getElementById('articleModalTitle');
 const articleModalBody = document.getElementById('articleModalBody');
+const articleModalImage = document.getElementById('articleModalImage');
 
 function openArticleModal(card) {
     if (!articleModal) return;
@@ -91,7 +92,22 @@ function openArticleModal(card) {
     articleModalDate.textContent = card.dataset.articleDate || '';
     articleModalTag.textContent = card.dataset.articleTag || '';
     articleModalTitle.textContent = card.dataset.articleTitle || '';
-    articleModalBody.textContent = card.dataset.articleBody || '';
+
+    const bodyText = card.dataset.articleBody || '';
+    articleModalBody.innerHTML = bodyText
+        .split('\n\n')
+        .map(p => `<p>${p}</p>`)
+        .join('');
+
+    const imgSrc = card.dataset.articleImage;
+    if (imgSrc) {
+        articleModalImage.src = imgSrc;
+        articleModalImage.style.display = 'block';
+    } else {
+        articleModalImage.style.display = 'none';
+        articleModalImage.removeAttribute('src');
+    }
+
     articleModal.classList.add('open');
 }
 
@@ -108,7 +124,7 @@ if (articleModalClose) {
     articleModalClose.addEventListener('click', closeArticleModal);
 }
 
-// Close when clicking outside the popup (overlay area)
+// Close when clicking outside the popup (overlay)
 if (articleModal) {
     articleModal.addEventListener('click', (e) => {
         if (e.target === articleModal) {
@@ -117,7 +133,7 @@ if (articleModal) {
     });
 }
 
-// Optional: close on Esc key
+// Close on Esc
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && articleModal && articleModal.classList.contains('open')) {
         closeArticleModal();
