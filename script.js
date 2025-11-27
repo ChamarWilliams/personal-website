@@ -74,3 +74,53 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+(function () {
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+    let isScrolling = false;
+
+    function getCurrentSectionIndex() {
+        const scrollPos = window.scrollY;
+        let closestIndex = 0;
+        let closestDist = Infinity;
+
+        sections.forEach((sec, index) => {
+            const rect = sec.getBoundingClientRect();
+            const offsetTop = rect.top + window.scrollY;
+            const dist = Math.abs(offsetTop - scrollPos);
+            if (dist < closestDist) {
+                closestDist = dist;
+                closestIndex = index;
+            }
+        });
+        return closestIndex;
+    }
+
+    window.addEventListener('wheel', (e) => {
+        // Only trigger for main vertical scroll, ignore if already animating
+        if (isScrolling) return;
+
+        const delta = e.deltaY;
+        if (delta === 0) return;
+
+        e.preventDefault();
+
+        const currentIndex = getCurrentSectionIndex();
+        let targetIndex = currentIndex + (delta > 0 ? 1 : -1);
+
+        // Clamp to valid range
+        if (targetIndex < 0) targetIndex = 0;
+        if (targetIndex >= sections.length) targetIndex = sections.length - 1;
+
+        const targetSection = sections[targetIndex];
+        if (!targetSection) return;
+
+        isScrolling = true;
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // Unlock after animation
+        setTimeout(() => {
+            isScrolling = false;
+        }, 800); // adjust if you change scroll-behavior speed
+    }, { passive: false });
+})();
