@@ -71,9 +71,9 @@
             <!-- Systems & Tools Framework -->
             <div class="project-card"
                  data-project-title="Systems & Tools Framework"
-                 data-project-summary="Modular framework for building and iterating core systems quickly."
+                 data-project-summary="Toolkit for analyzing algorithm behavior in terms of time, memory, and storage complexity."
                  data-project-video=""
-                 data-project-body="The Systems & Tools Framework provides reusable building blocks such as event buses, finite state machines, and debugging overlays.\n\nIt focuses on making it cheap to experiment with mechanics and behaviors by centralizing logging, configuration, and feature flags, so changes are easy to roll out and reason about.\n\nThe architecture is designed to be embedded into real-time experiences, but the patterns apply broadly to any system that benefits from clean separation between domain logic, orchestration, and instrumentation.">
+                 data-project-body="This toolkit focuses on measuring how algorithms behave under real workloads by tracking their time, memory, and storage characteristics. It runs configurable test suites against a given implementation, records how runtime scales with input size, and captures peak and average memory usage.The system aggregates these measurements into simple visual summaries and reports, so it’s easy to compare different approaches to the same problem. It is designed to highlight practical complexity—not just Big-O on paper—by surfacing constant factors, cache effects, and I/O costs that show up in real executions. Internally, the toolkit wraps target functions with timing, allocation, and storage instrumentation, then exports the collected data for further analysis or visualization. This makes it useful both for learning algorithmic trade-offs and for performance tuning in production-style code.">
                 <div class="project-header">⚙️</div>
                 <div class="project-body">
                     <h3 class="project-title">Systems & Tools Framework</h3>
@@ -92,14 +92,14 @@
             <!-- Performance & Monitoring Toolkit -->
             <div class="project-card"
                  data-project-title="Performance & Monitoring Toolkit"
-                 data-project-summary="Instrumentation layer for latency, throughput, and load across services."
+                 data-project-summary="Toolkit for analyzing algorithm behavior in terms of time, memory, and storage complexity."
                  data-project-video=""
-                 data-project-body="The Performance & Monitoring Toolkit instruments key paths across the stack, capturing timings, error codes, and resource usage.\n\nIt supports lightweight counters and histograms so bottlenecks can be identified without overwhelming the system with telemetry.\n\nThe toolkit is designed to plug into real-time or backend workloads, making it easier to reason about performance regressions and validate the impact of optimizations.">
+               data-project-body="This toolkit focuses on measuring how algorithms behave under real workloads by tracking their time, memory, and storage characteristics. It runs configurable test suites against a given implementation, records how runtime scales with input size, and captures peak and average memory usage.The system aggregates these measurements into simple visual summaries and reports, so it’s easy to compare different approaches to the same problem. It is designed to highlight practical complexity—not just Big-O on paper—by surfacing constant factors, cache effects, and I/O costs that show up in real executions. Internally, the toolkit wraps target functions with timing, allocation, and storage instrumentation, then exports the collected data for further analysis or visualization. This makes it useful both for learning algorithmic trade-offs and for performance tuning in production-style code.">
                 <div class="project-header">📊</div>
                 <div class="project-body">
                     <h3 class="project-title">Performance & Monitoring Toolkit</h3>
                     <p class="project-description">
-                        Instrumentation and profiling toolkit for tracking latency, throughput, and resource usage across backend services and real-time systems.
+                       A lightweight analysis tool that runs algorithms against configurable input sizes and records how their runtime, memory usage, and storage footprint scale in practice. It wraps target functions with instrumentation, collects timing and allocation metrics, and then summarizes the results so different implementations can be compared on real-world performance, not just theoretical Big-O.
                     </p>
                     <div class="project-tags">
                         <span class="tag">Optimization</span>
