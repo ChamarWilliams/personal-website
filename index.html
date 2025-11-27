@@ -177,7 +177,8 @@
                  data-article-date="November 26, 2025"
                  data-article-tag="Systems & Netcode"
                  data-article-title="Server-Authoritative Systems: Architecture & Implementation"
-                 data-article-body="Deep dive into building exploit-resistant, server-authoritative architectures with client-side prediction, validation layers, and rollback strategies across real-world network conditions.">
+                 data-article-body="Deep dive into building exploit-resistant, server-authoritative architectures with client-side prediction, validation layers, rollback strategies, and practical patterns for real-world latency.\n\nCovers how to structure messages, separate trust boundaries, and monitor behavior so systems stay fair and responsive even under bad networks."
+                 data-article-image="images/server-arch.png">
                 <div class="blog-date">November 26, 2025</div>
                 <h3 class="blog-title">Server-Authoritative Systems: Architecture & Implementation</h3>
                 <p class="blog-excerpt">
@@ -190,7 +191,8 @@
                  data-article-date="November 20, 2025"
                  data-article-tag="Realtime Design"
                  data-article-title="Designing Responsive Realtime Interactions"
-                 data-article-body="Explores timing-sensitive systems, interpolation techniques, and synchronization strategies that keep interfaces responsive even under fluctuating latency.">
+                 data-article-body="Explores how to keep interactions responsive when latency is unpredictable, using interpolation, buffering, and client-side smoothing.\n\nIncludes trade-offs between strict correctness and perceived responsiveness, and patterns for timing-sensitive UI/UX in realtime systems."
+                 data-article-image="images/realtime-design.png">
                 <div class="blog-date">November 20, 2025</div>
                 <h3 class="blog-title">Designing Responsive Realtime Interactions</h3>
                 <p class="blog-excerpt">
@@ -203,7 +205,8 @@
                  data-article-date="November 15, 2025"
                  data-article-tag="Optimization"
                  data-article-title="Optimizing Bandwidth in Networked Applications"
-                 data-article-body="Covers delta compression, interest management, and selective state sync patterns to keep bandwidth usage low while preserving correctness.">
+                 data-article-body="Walks through delta compression, interest management, and selective state sync so you can scale users without exploding bandwidth.\n\nFocuses on practical heuristics and metrics you can track to decide what, when, and how often to send."
+                 data-article-image="images/bandwidth-opt.png">
                 <div class="blog-date">November 15, 2025</div>
                 <h3 class="blog-title">Optimizing Bandwidth in Networked Applications</h3>
                 <p class="blog-excerpt">
@@ -224,7 +227,8 @@
                     <span class="article-modal-tag" id="articleModalTag"></span>
                 </div>
                 <h3 class="article-modal-title" id="articleModalTitle"></h3>
-                <p class="article-modal-body" id="articleModalBody"></p>
+                <img id="articleModalImage" class="article-modal-image" alt="" style="display:none;">
+                <div class="article-modal-body" id="articleModalBody"></div>
             </div>
         </div>
     </div>
@@ -259,7 +263,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Chamar Williams. Built with care. </p>
+        <p>&copy; 2025 Chamar Williams. Built with care. <a href="#" style="text-decoration: none;">MIT License</a></p>
     </footer>
 
     <script src="script.js"></script>
