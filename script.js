@@ -21,11 +21,10 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Smooth scroll for navigation links (still works for real sections)
+// Smooth scroll for navigation links (skip #all-projects which is JS-only)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        // Allow JS handlers (like #all-projects) to override
         if (href === '#all-projects') return;
 
         e.preventDefault();
@@ -147,6 +146,10 @@ const projectModalSummary = document.getElementById('projectModalSummary');
 const projectModalVideoWrapper = document.getElementById('projectModalVideoWrapper');
 const projectModalBody = document.getElementById('projectModalBody');
 
+// All Projects modal (needed inside openProjectModal)
+const allProjectsModal = document.getElementById('allProjectsModal');
+const allProjectsModalClose = document.getElementById('allProjectsModalClose');
+
 function openProjectModal(card) {
     if (!projectModal) return;
 
@@ -174,6 +177,11 @@ function openProjectModal(card) {
         .split('\n\n')
         .map(p => `<p>${p}</p>`)
         .join('');
+
+    // Close the All Projects modal if it’s open so the project detail is visible
+    if (allProjectsModal && allProjectsModal.classList.contains('open')) {
+        allProjectsModal.classList.remove('open');
+    }
 
     projectModal.classList.add('open');
 }
@@ -205,10 +213,7 @@ if (projectModal) {
 }
 
 // All Projects modal
-const allProjectsModal = document.getElementById('allProjectsModal');
-const allProjectsModalClose = document.getElementById('allProjectsModalClose');
-
-// Open All Projects when clicking nav "Projects"
+// (allProjectsModal and allProjectsModalClose already defined above)
 document.querySelectorAll('.nav-links a[href="#all-projects"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
