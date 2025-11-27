@@ -74,3 +74,52 @@ window.addEventListener('scroll', () => {
         }
     });
 });
+
+// Article modal logic
+const articleModal = document.getElementById('articleModal');
+const articleModalClose = document.getElementById('articleModalClose');
+const articleCards = document.querySelectorAll('.blog-card');
+
+const articleModalDate = document.getElementById('articleModalDate');
+const articleModalTag = document.getElementById('articleModalTag');
+const articleModalTitle = document.getElementById('articleModalTitle');
+const articleModalBody = document.getElementById('articleModalBody');
+
+function openArticleModal(card) {
+    if (!articleModal) return;
+
+    articleModalDate.textContent = card.dataset.articleDate || '';
+    articleModalTag.textContent = card.dataset.articleTag || '';
+    articleModalTitle.textContent = card.dataset.articleTitle || '';
+    articleModalBody.textContent = card.dataset.articleBody || '';
+    articleModal.classList.add('open');
+}
+
+function closeArticleModal() {
+    if (!articleModal) return;
+    articleModal.classList.remove('open');
+}
+
+articleCards.forEach(card => {
+    card.addEventListener('click', () => openArticleModal(card));
+});
+
+if (articleModalClose) {
+    articleModalClose.addEventListener('click', closeArticleModal);
+}
+
+// Close when clicking outside the popup (overlay area)
+if (articleModal) {
+    articleModal.addEventListener('click', (e) => {
+        if (e.target === articleModal) {
+            closeArticleModal();
+        }
+    });
+}
+
+// Optional: close on Esc key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && articleModal && articleModal.classList.contains('open')) {
+        closeArticleModal();
+    }
+});
