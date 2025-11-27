@@ -25,7 +25,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const href = this.getAttribute('href');
-        if (href === '#all-projects') return;
+        if (href === '#all-projects') return; // handled separately
 
         e.preventDefault();
         const target = document.querySelector(href);
@@ -136,6 +136,42 @@ if (articleModal) {
     });
 }
 
+// All Projects modal
+const allProjectsModal = document.getElementById('allProjectsModal');
+const allProjectsModalClose = document.getElementById('allProjectsModalClose');
+
+function openAllProjectsModal() {
+    if (!allProjectsModal) return;
+    allProjectsModal.classList.add('open');
+}
+
+function closeAllProjectsModal() {
+    if (!allProjectsModal) return;
+    allProjectsModal.classList.remove('open');
+}
+
+// Open All Projects when clicking nav "Projects"
+document.querySelectorAll('.nav-links a[href="#all-projects"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAllProjectsModal();
+        nav.classList.remove('open');
+        navOverlay.classList.remove('open');
+    });
+});
+
+if (allProjectsModalClose) {
+    allProjectsModalClose.addEventListener('click', closeAllProjectsModal);
+}
+
+if (allProjectsModal) {
+    allProjectsModal.addEventListener('click', (e) => {
+        if (e.target === allProjectsModal) {
+            closeAllProjectsModal();
+        }
+    });
+}
+
 // Project modal logic (single project detail)
 const projectModal = document.getElementById('projectModal');
 const projectModalClose = document.getElementById('projectModalClose');
@@ -145,10 +181,6 @@ const projectModalTitle = document.getElementById('projectModalTitle');
 const projectModalSummary = document.getElementById('projectModalSummary');
 const projectModalVideoWrapper = document.getElementById('projectModalVideoWrapper');
 const projectModalBody = document.getElementById('projectModalBody');
-
-// All Projects modal (needed inside openProjectModal)
-const allProjectsModal = document.getElementById('allProjectsModal');
-const allProjectsModalClose = document.getElementById('allProjectsModalClose');
 
 function openProjectModal(card) {
     if (!projectModal) return;
@@ -178,10 +210,8 @@ function openProjectModal(card) {
         .map(p => `<p>${p}</p>`)
         .join('');
 
-    // Close the All Projects modal if it’s open so the project detail is visible
-    if (allProjectsModal && allProjectsModal.classList.contains('open')) {
-        allProjectsModal.classList.remove('open');
-    }
+    // Close All Projects modal if it is open, so the project detail is visible
+    closeAllProjectsModal();
 
     projectModal.classList.add('open');
 }
@@ -208,37 +238,6 @@ if (projectModal) {
     projectModal.addEventListener('click', (e) => {
         if (e.target === projectModal) {
             closeProjectModal();
-        }
-    });
-}
-
-// All Projects modal
-// (allProjectsModal and allProjectsModalClose already defined above)
-document.querySelectorAll('.nav-links a[href="#all-projects"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (allProjectsModal) {
-            allProjectsModal.classList.add('open');
-        }
-        // close side nav when opening modal
-        nav.classList.remove('open');
-        navOverlay.classList.remove('open');
-    });
-});
-
-function closeAllProjectsModal() {
-    if (!allProjectsModal) return;
-    allProjectsModal.classList.remove('open');
-}
-
-if (allProjectsModalClose) {
-    allProjectsModalClose.addEventListener('click', closeAllProjectsModal);
-}
-
-if (allProjectsModal) {
-    allProjectsModal.addEventListener('click', (e) => {
-        if (e.target === allProjectsModal) {
-            closeAllProjectsModal();
         }
     });
 }
