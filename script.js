@@ -21,11 +21,15 @@ document.querySelectorAll('.nav-links a').forEach(link => {
     });
 });
 
-// Smooth scroll for navigation links
+// Smooth scroll for navigation links (still works for real sections)
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        // Allow JS handlers (like #all-projects) to override
+        if (href === '#all-projects') return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const target = document.querySelector(href);
         if (target) {
             target.scrollIntoView({
                 behavior: 'smooth',
@@ -69,7 +73,8 @@ window.addEventListener('scroll', () => {
 
     navLinks.forEach(link => {
         link.style.color = '';
-        if (link.getAttribute('href').slice(1) === current) {
+        const href = link.getAttribute('href');
+        if (href.startsWith('#') && href.slice(1) === current) {
             link.style.color = 'var(--color-accent)';
         }
     });
@@ -132,7 +137,7 @@ if (articleModal) {
     });
 }
 
-// Project modal logic
+// Project modal logic (single project detail)
 const projectModal = document.getElementById('projectModal');
 const projectModalClose = document.getElementById('projectModalClose');
 const projectCards = document.querySelectorAll('.project-card');
@@ -156,7 +161,6 @@ function openProjectModal(card) {
     // Reset video wrapper
     projectModalVideoWrapper.innerHTML = '';
     if (video) {
-        // Assume YouTube-style embed URL or any iframe src
         const iframe = document.createElement('iframe');
         iframe.src = video;
         iframe.title = title || 'Project video';
@@ -166,7 +170,6 @@ function openProjectModal(card) {
         projectModalVideoWrapper.appendChild(iframe);
     }
 
-    // Body text paragraphs
     projectModalBody.innerHTML = bodyText
         .split('\n\n')
         .map(p => `<p>${p}</p>`)
@@ -201,14 +204,45 @@ if (projectModal) {
     });
 }
 
-// Close both modals on Esc
+// All Projects modal
+const allProjectsModal = document.getElementById('allProjectsModal');
+const allProjectsModalClose = document.getElementById('allProjectsModalClose');
+
+// Open All Projects when clicking nav "Projects"
+document.querySelectorAll('.nav-links a[href="#all-projects"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (allProjectsModal) {
+            allProjectsModal.classList.add('open');
+        }
+        // close side nav when opening modal
+        nav.classList.remove('open');
+        navOverlay.classList.remove('open');
+    });
+});
+
+function closeAllProjectsModal() {
+    if (!allProjectsModal) return;
+    allProjectsModal.classList.remove('open');
+}
+
+if (allProjectsModalClose) {
+    allProjectsModalClose.addEventListener('click', closeAllProjectsModal);
+}
+
+if (allProjectsModal) {
+    allProjectsModal.addEventListener('click', (e) => {
+        if (e.target === allProjectsModal) {
+            closeAllProjectsModal();
+        }
+    });
+}
+
+// Close modals on Esc
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (articleModal && articleModal.classList.contains('open')) {
-            closeArticleModal();
-        }
-        if (projectModal && projectModal.classList.contains('open')) {
-            closeProjectModal();
-        }
+        if (articleModal && articleModal.classList.contains('open')) closeArticleModal();
+        if (projectModal && projectModal.classList.contains('open')) closeProjectModal();
+        if (allProjectsModal && allProjectsModal.classList.contains('open')) closeAllProjectsModal();
     }
 });
