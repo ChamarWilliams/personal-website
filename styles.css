@@ -655,6 +655,89 @@ nav > div {
     margin: 12px 0 16px;
 }
 
+/* Project Modal */
+.project-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 2100;
+    backdrop-filter: blur(4px);
+}
+
+.project-modal-overlay.open {
+    display: flex;
+}
+
+.project-modal {
+    background: var(--color-surface);
+    color: var(--color-text);
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+    max-width: 880px;
+    width: min(95%, 880px);
+    max-height: 85vh;
+    padding: 24px 24px 20px;
+    position: relative;
+    overflow-y: auto;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.project-modal-close {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 999px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.project-modal-close:hover {
+    background: rgba(0, 0, 0, 0.06);
+    color: var(--color-text);
+}
+
+.project-modal-content {
+    margin-top: 12px;
+}
+
+.project-modal-title {
+    font-size: 1.4rem;
+    margin-bottom: 6px;
+}
+
+.project-modal-summary {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 14px;
+}
+
+.project-modal-video-wrapper {
+    margin: 12px 0 18px;
+}
+
+.project-modal-video-wrapper iframe,
+.project-modal-video-wrapper video {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 12px;
+    border: none;
+    aspect-ratio: 16 / 9;
+}
+
+.project-modal-body {
+    font-size: 0.96rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+}
+
 /* Contact Section */
 .contact-content {
     max-width: 600px;
