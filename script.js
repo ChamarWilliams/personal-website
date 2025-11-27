@@ -243,15 +243,16 @@ if (projectModal) {
     });
 }
 
-// Build Featured Projects from All Projects (data-featured="true")
-const allProjectsGrid = document.querySelector('.all-projects-grid');
-const featuredProjectsGrid = document.querySelector('.featured-projects-grid');
+// Build Featured Projects from All Projects once DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const allProjectsGrid = document.querySelector('.all-projects-grid');
+    const featuredProjectsGrid = document.querySelector('.featured-projects-grid');
 
-if (allProjectsGrid && featuredProjectsGrid) {
+    if (!allProjectsGrid || !featuredProjectsGrid) return;
+
     const allProjectCards = Array.from(allProjectsGrid.querySelectorAll('.project-card'));
     const featuredCards = allProjectCards.filter(card => card.dataset.featured === 'true');
 
-    // Clear featured container (should be empty already)
     featuredProjectsGrid.innerHTML = '';
 
     featuredCards.forEach(card => {
@@ -269,8 +270,13 @@ if (allProjectsGrid && featuredProjectsGrid) {
     projectCards.forEach(card => {
         card.addEventListener('click', () => openProjectModal(card));
     });
-}
+});
 
 // Close modals on Esc
 document.addEventListener('keydown', (e) => {
-    if
+    if (e.key === 'Escape') {
+        if (articleModal && articleModal.classList.contains('open')) closeArticleModal();
+        if (projectModal && projectModal.classList.contains('open')) closeProjectModal();
+        if (allProjectsModal && allProjectsModal.classList.contains('open')) closeAllProjectsModal();
+    }
+});
