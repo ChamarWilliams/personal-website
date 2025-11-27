@@ -16,7 +16,9 @@
     --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-html {
+/* enable scroll snap by section */
+html, body {
+    height: 100%;
     scroll-behavior: smooth;
 }
 
@@ -27,11 +29,6 @@ body {
     line-height: 1.6;
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
-}
-
-html, body {
-    height: 100%;
-    scroll-behavior: smooth;
 }
 
 /* Navigation */
@@ -75,13 +72,8 @@ nav {
     transition: transform 0.35s ease-out;
 }
 
-nav:hover {
-    transform: translateX(0);
-}
-
 nav.open {
     transform: translateX(0);
-    transition: transform 0.35s ease-out;
 }
 
 nav > div {
@@ -160,12 +152,7 @@ nav > div {
     background: none;
     position: relative;
     overflow: hidden;
-}
-
-.hero,
-.section {
     scroll-snap-align: start;
-    min-height: 100vh;
 }
 
 .hero::before {
@@ -285,6 +272,8 @@ nav > div {
     margin-right: auto;
     padding: 80px 20px;
     border-top: 1px solid #e5e5e5;
+    min-height: 100vh;
+    scroll-snap-align: start;
 }
 
 .section-title {
